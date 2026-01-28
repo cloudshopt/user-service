@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/info', function () {
     return response()->json([
-        'ok11' => true,
+        'ok' => true,
         'service' => config('app.name'),
         'sha' => env('IMAGE_SHA', null),
         'time' => now()->toISOString(),
@@ -35,3 +36,15 @@ Route::get('/database', function () {
         ], 500);
     }
 });
+
+
+
+
+
+
+Route::prefix('auth')->group(function () {
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+});
+
+Route::middleware('jwt')->get('/me', [AuthController::class, 'me']);
