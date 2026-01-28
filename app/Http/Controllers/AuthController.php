@@ -79,9 +79,4 @@ class AuthController extends Controller
             ],
         ]);
     }
-
-    public function health()
-    {
-        return response()->json(['status' => 'ok']);
-    }
 }

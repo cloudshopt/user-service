@@ -27,7 +27,6 @@ class JwtService
         return JWT::encode($payload, $this->secret(), 'HS256');
     }
 
-    /** @return array<string,mixed> */
     public function decode(string $token): array
     {
         $decoded = JWT::decode($token, new Key($this->secret(), 'HS256'));
