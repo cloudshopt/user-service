@@ -3,23 +3,10 @@ info:
   title: CloudShopt User Service API
   version: 1.0.0
 tags:
-  - name: Health
   - name: Diagnostics
   - name: Auth
 
 paths:
-  /healthz:
-    get:
-      tags: [Health]
-      summary: Health check
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StatusOkBool"
-
   /info:
     get:
       tags: [Diagnostics]
@@ -150,14 +137,6 @@ components:
           additionalProperties:
             type: array
             items: { type: string }
-
-    StatusOkBool:
-      type: object
-      required: [ok]
-      properties:
-        ok:
-          type: boolean
-          example: true
 
     InfoResponse:
       type: object
